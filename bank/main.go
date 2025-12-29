@@ -2,11 +2,20 @@ package main
 
 import "fmt"
 
-func main() {
-	var owner string = "Rodrigo"
-	var agencyNumber = 159
-	var accountNumber = 123456
-	var balance float64 = 1223.45
+type CurrentAccount struct {
+	owner         string
+	agencyNumber  int
+	accountNumber int
+	balance       float64
+}
 
-	fmt.Println(owner, agencyNumber, accountNumber, balance)
+func main() {
+	ownerRodrigo := CurrentAccount{
+		owner:         "Rodrigo",
+		agencyNumber:  123,
+		accountNumber: 123456,
+		balance:       1234.50,
+	}
+
+	fmt.Println(ownerRodrigo)
 }
