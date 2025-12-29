@@ -18,4 +18,10 @@ func main() {
 	}
 
 	fmt.Println(ownerRodrigo)
+
+	var accountRodrigo *CurrentAccount
+	accountRodrigo = new(CurrentAccount)
+	accountRodrigo.owner = "Rodrigo"
+
+	fmt.Println(*accountRodrigo)
 }
