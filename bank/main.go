@@ -29,6 +29,17 @@ func (c *CurrentAccount) Deposit(amountDeposit float64) (string, float64) {
 	}
 }
 
+func (c *CurrentAccount) Transfer(amountTransfer float64, destinationAccount *CurrentAccount) string {
+	canTransfer := amountTransfer > 0 && amountTransfer <= c.balance
+	if canTransfer {
+		c.balance -= amountTransfer
+		destinationAccount.balance += amountTransfer
+		return "Transfer successful"
+	} else {
+		return "Insufficient balance"
+	}
+}
+
 func main() {
 	accountRodrigo := CurrentAccount{
 		owner:         "Rodrigo",
@@ -37,7 +48,15 @@ func main() {
 		balance:       1234.50,
 	}
 
+	accountAmanda := CurrentAccount{
+		owner:         "Amanda",
+		agencyNumber:  123,
+		accountNumber: 123456,
+		balance:       1234.50,
+	}
+
 	fmt.Println("Balance Rodrigo:", accountRodrigo.balance)
-	fmt.Println(accountRodrigo.Withdraw(100.00))
-	fmt.Println("Balance Rodrigo after withdrawal:", accountRodrigo.balance)
+	fmt.Println(accountRodrigo.Transfer(100.00, &accountAmanda))
+	fmt.Println("Balance Rodrigo after transfer:", accountRodrigo.balance)
+	fmt.Println("Balance Amanda after transfer:", accountAmanda.balance)
 }
