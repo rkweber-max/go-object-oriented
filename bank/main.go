@@ -19,6 +19,16 @@ func (c *CurrentAccount) Withdraw(amountWithdraw float64) string {
 	}
 }
 
+func (c *CurrentAccount) Deposit(amountDeposit float64) (string, float64) {
+	canDeposit := amountDeposit > 0
+	if canDeposit {
+		c.balance += amountDeposit
+		return "Deposit successful", c.balance
+	} else {
+		return "Invalid deposit amount", c.balance
+	}
+}
+
 func main() {
 	accountRodrigo := CurrentAccount{
 		owner:         "Rodrigo",
