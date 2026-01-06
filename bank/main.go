@@ -4,18 +4,19 @@ import (
 	"fmt"
 
 	"github.com/rkweber-max/go-object-oriented/bank/accounts"
+	"github.com/rkweber-max/go-object-oriented/bank/customers"
 )
 
 func main() {
 	accountRodrigo := accounts.CurrentAccount{
-		Owner:         "Rodrigo",
+		Owner:         customers.Customer{Name: "Rodrigo", CPF: "12345678900", Email: "rodrigo@example.com"},
 		AgencyNumber:  123,
 		AccountNumber: 123456,
 		Balance:       1234.50,
 	}
 
 	accountAmanda := accounts.CurrentAccount{
-		Owner:         "Amanda",
+		Owner:         customers.Customer{Name: "Amanda", CPF: "12345678900", Email: "amanda@example.com"},
 		AgencyNumber:  123,
 		AccountNumber: 123456,
 		Balance:       1234.50,
