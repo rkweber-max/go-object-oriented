@@ -7,8 +7,7 @@ import (
 )
 
 func main() {
+	accountRodrigo := accounts.CurrentAccount{}
 
-	accountExample := accounts.CurrentAccount{}
-	accountExample.Deposit(100.00)
-	fmt.Println(accountExample.GetBalance())
+	fmt.Println(accountRodrigo)
 }

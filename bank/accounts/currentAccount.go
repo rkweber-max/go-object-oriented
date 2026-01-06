@@ -3,10 +3,9 @@ package accounts
 import "github.com/rkweber-max/go-object-oriented/bank/customers"
 
 type CurrentAccount struct {
-	Owner         customers.Customer
-	AgencyNumber  int
-	AccountNumber int
-	balance       float64
+	Owner                       customers.Customer
+	AgencyNumber, AccountNumber int
+	balance                     float64
 }
 
 func (c *CurrentAccount) Withdraw(amountWithdraw float64) string {

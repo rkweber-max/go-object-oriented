@@ -1,7 +1,5 @@
 package customers
 
 type Customer struct {
-	Name  string
-	CPF   string
-	Email string
+	Name, CPF, Email string
 }
