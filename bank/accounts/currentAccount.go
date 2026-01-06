@@ -6,13 +6,13 @@ type CurrentAccount struct {
 	Owner         customers.Customer
 	AgencyNumber  int
 	AccountNumber int
-	Balance       float64
+	balance       float64
 }
 
 func (c *CurrentAccount) Withdraw(amountWithdraw float64) string {
-	canWithdraw := amountWithdraw > 0 && amountWithdraw <= c.Balance
+	canWithdraw := amountWithdraw > 0 && amountWithdraw <= c.balance
 	if canWithdraw {
-		c.Balance -= amountWithdraw
+		c.balance -= amountWithdraw
 		return "Withdrawal successful"
 	} else {
 		return "Insufficient balance"
@@ -22,20 +22,24 @@ func (c *CurrentAccount) Withdraw(amountWithdraw float64) string {
 func (c *CurrentAccount) Deposit(amountDeposit float64) (string, float64) {
 	canDeposit := amountDeposit > 0
 	if canDeposit {
-		c.Balance += amountDeposit
-		return "Deposit successful", c.Balance
+		c.balance += amountDeposit
+		return "Deposit successful", c.balance
 	} else {
-		return "Invalid deposit amount", c.Balance
+		return "Invalid deposit amount", c.balance
 	}
 }
 
 func (c *CurrentAccount) Transfer(amountTransfer float64, destinationAccount *CurrentAccount) string {
-	canTransfer := amountTransfer > 0 && amountTransfer <= c.Balance && c.Balance > 0 && destinationAccount != nil
+	canTransfer := amountTransfer > 0 && amountTransfer <= c.balance && c.balance > 0 && destinationAccount != nil
 	if canTransfer {
-		c.Balance -= amountTransfer
-		destinationAccount.Balance += amountTransfer
+		c.balance -= amountTransfer
+		destinationAccount.balance += amountTransfer
 		return "Transfer successful"
 	} else {
 		return "Insufficient balance"
 	}
+}
+
+func (c *CurrentAccount) GetBalance() float64 {
+	return c.balance
 }
