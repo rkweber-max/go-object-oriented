@@ -1,7 +1,9 @@
 package accounts
 
+import "github.com/rkweber-max/go-object-oriented/bank/customers"
+
 type CurrentAccount struct {
-	Owner         string
+	Owner         customers.Customer
 	AgencyNumber  int
 	AccountNumber int
 	Balance       float64
